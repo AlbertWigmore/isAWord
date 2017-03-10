@@ -1,6 +1,5 @@
 import enchant
 import itertools
-import time
 
 d = enchant.Dict("en_GB")
 _check = d.check
@@ -47,32 +46,8 @@ def brute_force(s):
 
 
 if __name__ == "__main__":
-    # string = "Thisisanexamplestring"
-    # string = "Although I do not have extensive experience of working in thermal design"
+    string = open("data.txt").read().replace(" ", "").replace("\n", "")
+    original = open("data.txt").read().replace("\n", "")
 
-    # string = "shoe"*10
-    # string = "tarts"*20
-    # string = "some"*3
-
-    string = "forevermore"
-
-    # string = open("data.txt").read().replace(" ", "").replace("\n", "")
-    # original = open("data.txt").read().replace("\n", "")
-
-    '''
-    t1 = time.time()
-    output = word_sieve(string)
-    print time.time() - t1
-    result = [" ".join(y) for y in output]
-    print len(result)
-    pprint(result)
-
-    t1 = time.time()
-    print len(brute_force(string))
-    print time.time() - t1
-    pprint(brute_force(string))
-    '''
-    t1 = time.time()
-    brute_force(string)
-    t2 = time.time()
-    print t2 - t1
+    brute_force(string)  # Method 1: Brute force method checks all substrings
+    word_sieve(string)  # Method 2: Checks all prefixes of the string for words
